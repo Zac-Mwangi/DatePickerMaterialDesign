@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
                 .build();
 
         MaterialDatePicker datePicker2 = MaterialDatePicker.Builder.datePicker()
-                .setTitleText("Select Date From").setSelection(MaterialDatePicker.todayInUtcMilliseconds())
+                .setTitleText("Select Date To").setSelection(MaterialDatePicker.todayInUtcMilliseconds())
                 .build();
 
 
