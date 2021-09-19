@@ -12,7 +12,7 @@ import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClic
 
 public class MainActivity extends AppCompatActivity {
     TextView dateDate;
-    Button buttonDate;
+    Button buttonDate,buttonDateT;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,19 +21,36 @@ public class MainActivity extends AppCompatActivity {
 
         dateDate = findViewById(R.id.dateDate);
         buttonDate = findViewById(R.id.buttonDate);
+        buttonDateT = findViewById(R.id.buttonDateT);
 
         MaterialDatePicker datePicker = MaterialDatePicker.Builder.datePicker()
                 .setTitleText("Select Date From").setSelection(MaterialDatePicker.todayInUtcMilliseconds())
                 .build();
 
+        MaterialDatePicker datePicker2 = MaterialDatePicker.Builder.datePicker()
+                .setTitleText("Select Date From").setSelection(MaterialDatePicker.todayInUtcMilliseconds())
+                .build();
+
+
         buttonDate.setOnClickListener(v -> {
             datePicker.show(getSupportFragmentManager(),"Material Date Picker");
             datePicker.addOnPositiveButtonClickListener(selection -> {
-                dateDate.setText(datePicker.getHeaderText());
+                //dateDate.setText(datePicker.getHeaderText());
                 buttonDate.setText(datePicker.getHeaderText());
 
                 String d = datePicker.getHeaderText();
                 Toast.makeText(getApplicationContext(), d, Toast.LENGTH_SHORT).show();
+            });
+        });
+
+        buttonDateT.setOnClickListener(v -> {
+            datePicker2.show(getSupportFragmentManager(),"Material Date Picker");
+            datePicker2.addOnPositiveButtonClickListener(selection -> {
+               // dateDate.setText(datePicker2.getHeaderText());
+                buttonDateT.setText(datePicker2.getHeaderText());
+
+                //String d = datePicker.getHeaderText();
+                //Toast.makeText(getApplicationContext(), d, Toast.LENGTH_SHORT).show();
             });
         });
     }
