@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
@@ -22,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         buttonDate = findViewById(R.id.buttonDate);
 
         MaterialDatePicker datePicker = MaterialDatePicker.Builder.datePicker()
-                .setTitleText("Select Date").setSelection(MaterialDatePicker.todayInUtcMilliseconds())
+                .setTitleText("Select Date From").setSelection(MaterialDatePicker.todayInUtcMilliseconds())
                 .build();
 
         buttonDate.setOnClickListener(v -> {
@@ -30,6 +31,9 @@ public class MainActivity extends AppCompatActivity {
             datePicker.addOnPositiveButtonClickListener(selection -> {
                 dateDate.setText(datePicker.getHeaderText());
                 buttonDate.setText(datePicker.getHeaderText());
+
+                String d = datePicker.getHeaderText();
+                Toast.makeText(getApplicationContext(), d, Toast.LENGTH_SHORT).show();
             });
         });
     }
